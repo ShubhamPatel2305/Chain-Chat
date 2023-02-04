@@ -7,6 +7,7 @@ import Style from "./Chat.module.css";
 import images from "../../../assets";
 import { converTime } from "../../../Utils/apiFeature";
 import { Loader } from "../../index";
+import Link from "next/link";
 
 const Chat = ({
   functionName,
@@ -102,7 +103,9 @@ const Chat = ({
             <div className={Style.Chat_box_send_img}>
 
               {/* // change1 */}
-              <Image src={images.smile} alt="smile" width={50} height={50} />
+              <Link href="/test">
+                <Image src={images.smile} alt="smile" width={50} height={50} />
+              </Link>
               <input
                 type="text"
                 placeholder="type your message"
