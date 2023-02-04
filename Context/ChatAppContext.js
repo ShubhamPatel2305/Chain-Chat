@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import chatApp from "./ChatApp.json";
+require("dotenv").config();
+const ethers = require("ethers");
 
 //INTERNAL IMPORT
 import {
@@ -100,18 +103,38 @@ export const ChatAppProvider = ({ children }) => {
   };
 
   //SEND MESSAGE TO YOUR FRIEND
-  const sendMessage = async ({ msg, address }) => {
-    console.log(msg, address);
+  const sendMessage = async ({ msg, addressTo, addressFrom }) => {
+    console.log(msg, addressTo, addressFrom);
     try {
-      if (!msg || !address) return setError("Please Type your Message");
+      
+      if (!msg || !addressTo || !addressFrom) return setError("Please Type your Message");
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://chain-node.5ire.network"
+      );
+      let network = await provider.getNetwork()
+      console.log("provider.getNetwork: ", network)
+      
+      // const signer=process.env.SIGNER;
+      const signer = "df57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e";
+      // console.log("signer:", signer)
+      
+      let wallet = new ethers.Wallet(signer, provider);
+      console.log("console here");
+      let walletSigner = wallet.connect(provider);
 
-      const contract = await connectingWithContract();
-      const addMessage = await contract.sendMessage(address, msg);
+      const contractOp = new ethers.Contract(
+        "0x5594bCC3dA055DfAa0E111F474B07A9Bcf69b023",
+        chatApp.abi,
+        walletSigner
+      );
+
+      const addMessage = await contractOp.sendMessage( addressFrom, addressTo, msg);
       setLoading(true);
       await addMessage.wait();
       setLoading(false);
       window.location.reload();
     } catch (error) {
+      console.log("error:", error);
       setError("Please reload and try again");
     }
   };

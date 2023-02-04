@@ -118,7 +118,7 @@ const Chat = ({
                   width={50}
                   height={50}
                   onClick={() =>
-                    functionName({ msg: message, address: chatData.address })
+                    functionName({ msg: message, addressTo: chatData.address, addressFrom: account })
                   }
                 />
               )}

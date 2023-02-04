@@ -162,6 +162,11 @@
       "inputs": [
         {
           "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
           "name": "friend_key",
           "type": "address"
         },
