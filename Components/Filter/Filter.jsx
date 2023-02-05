@@ -39,9 +39,9 @@ const Filter = () => {
           <Model
             openBox={setAddFriend}
             title="WELCOME TO"
-            head="CHAT BUDDY"
+            head="CHAIN CHAT"
             info="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sit doloribus quod vel expedita, dicta voluptatibus, nemo, deserunt minima quis recusandae porro officiis modi fugiat libero tempora corporis necessitatibus itaque!"
-            smallInfo="Kindley Select Your Friend Name & Address.."
+            smallInfo="Kindly Select Your Friend Name & Address.."
             image={images.hero}
             functionName={addFriends}
           />

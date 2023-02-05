@@ -7,7 +7,7 @@ import Style from "./Chat.module.css";
 import images from "../../../assets";
 import { converTime } from "../../../Utils/apiFeature";
 import { Loader } from "../../index";
-import Link from "next/link";
+import vc from "./videocallicon.png"
 
 const Chat = ({
   functionName,
@@ -103,15 +103,14 @@ const Chat = ({
             <div className={Style.Chat_box_send_img}>
 
               {/* // change1 */}
-              <Link href="/test">
-                <Image src={images.smile} alt="smile" width={50} height={50} />
-              </Link>
+              <a href="http://localhost:3002/">
+                <Image src={vc} alt="video call" width={50} height={50} />
+              </a>  
               <input
                 type="text"
                 placeholder="type your message"
                 onChange={(e) => setMessage(e.target.value)}
               />
-              <Image src={images.file} alt="file" width={50} height={50} />
               {loading == true ? (
                 <Loader />
               ) : (
