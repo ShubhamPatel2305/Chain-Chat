@@ -103,7 +103,7 @@ const Chat = ({
             <div className={Style.Chat_box_send_img}>
 
               {/* // change1 */}
-              <a href="http://localhost:3002/">
+              <a href="http://localhost:8000/">
                 <Image src={vc} alt="video call" width={50} height={50} />
               </a>  
               <input
